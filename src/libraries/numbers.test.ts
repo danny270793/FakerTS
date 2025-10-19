@@ -1,4 +1,4 @@
-import Numbers from './number';
+import Numbers from './numbers';
 
 describe('Numbers', () => {
   describe('between', () => {
