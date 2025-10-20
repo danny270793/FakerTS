@@ -8,9 +8,6 @@ export default class Numbers {
   public static digits(length: number): number {
     return Math.floor(Math.random() * 10 ** length);
   }
-  public static ascii(): number {
-    return Math.floor(Math.random() * 128);
-  }
   public static decimal(min: number, max: number, decimalPlaces: number): number {
     const integer: number = Numbers.between(min, max)
     const decimal: number = Numbers.digits(decimalPlaces)
