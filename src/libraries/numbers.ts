@@ -3,10 +3,11 @@ export default class Numbers {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
   public static digit(): number {
-    return Math.floor(Math.random() * 10);
+    return Numbers.between(0, 9);
   }
   public static digits(length: number): number {
-    return Math.floor(Math.random() * 10 ** length);
+    if(length === 0) return 0;
+    return Numbers.between(10 ** (length - 1), 10 ** length - 1);
   }
   public static decimal(
     min: number,
