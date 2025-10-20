@@ -76,12 +76,12 @@ describe('Strings', () => {
   });
 
   describe('hex', () => {
-    it('should return a hexadecimal string', () => {
+    it('should return a hexadecimal character', () => {
       const result = Strings.hex();
-      expect(result).toMatch(/^[0-9a-f]+$/);
+      expect(result).toMatch(/^[0-9a-fA-F]+$/);
     });
 
-    it('should return a string', () => {
+    it('should return a character', () => {
       const result = Strings.hex();
       expect(typeof result).toBe('string');
     });
@@ -98,12 +98,12 @@ describe('Strings', () => {
   describe('hexify', () => {
     it('should replace H with hexadecimal characters', () => {
       const result = Strings.hexify('HHH');
-      expect(result).toMatch(/^[0-9a-f]{3}$/);
+      expect(result).toMatch(/^[0-9a-fA-F]{3}$/);
     });
 
     it('should preserve non-H characters', () => {
       const result = Strings.hexify('H-H-H');
-      expect(result).toMatch(/^[0-9a-f]-[0-9a-f]-[0-9a-f]$/);
+      expect(result).toMatch(/^[0-9a-fA-F]-[0-9a-fA-F]-[0-9a-fA-F]$/);
     });
 
     it('should handle strings without H', () => {
@@ -230,7 +230,7 @@ describe('Strings', () => {
     it('should return a UUID format string', () => {
       const result = Strings.uuid();
       expect(result).toMatch(
-        /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/
+        /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/
       );
     });
 
