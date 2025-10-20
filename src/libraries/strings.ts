@@ -1,6 +1,9 @@
-import Numbers from "./numbers";
+import Numbers from './numbers';
 
-type WildcardCallback = (character: string, position: number) => string | number
+type WildcardCallback = (
+  character: string,
+  position: number
+) => string | number;
 
 export default class Strings {
   public static character(): string {
@@ -10,49 +13,51 @@ export default class Strings {
     return Array.from({ length }, () => this.character()).join('');
   }
   public static whildcard(text: string, callback: WildcardCallback): string {
-    const newText: string[] = []
+    const newText: string[] = [];
     for (let index: number = 0; index < text.length; index++) {
-      newText.push(callback(text[index] || '', index).toString())
+      newText.push(callback(text[index] || '', index).toString());
     }
-    return newText.join('')
+    return newText.join('');
   }
   public static hex(): string {
     return Numbers.digits(16).toString(16);
   }
   public static hexify(text: string): string {
     return Strings.whildcard(text, (character: string) =>
-        character === 'H' ? Strings.hex() : character
-    )
+      character === 'H' ? Strings.hex() : character
+    );
   }
   public static ascii(): string {
     return String.fromCodePoint(Numbers.between(32, 126));
   }
   public static asciiify(text: string): string {
     return Strings.whildcard(text, (character: string) =>
-        character === '*' ? Strings.ascii() : character
-    )
+      character === '*' ? Strings.ascii() : character
+    );
   }
   public static numerify(text: string): string {
     return Strings.whildcard(text, (character: string) =>
-        character === '#' ? Numbers.digit() : character
-    )
+      character === '#' ? Numbers.digit() : character
+    );
   }
   public static lexify(text: string): string {
     return Strings.whildcard(text, (character: string) =>
-        character === '?' ? Strings.character() : character
-    )
+      character === '?' ? Strings.character() : character
+    );
   }
   public static allify(text: string): string {
-    return Strings.hexify(Strings.asciiify(Strings.numerify(Strings.lexify(text))))
+    return Strings.hexify(
+      Strings.asciiify(Strings.numerify(Strings.lexify(text)))
+    );
   }
   public static uuid(): string {
-    return Strings.hexify('HHHHHHHH-HHHH-HHHH-HHHH-HHHHHHHHHHHH')
+    return Strings.hexify('HHHHHHHH-HHHH-HHHH-HHHH-HHHHHHHHHHHH');
   }
   public static repeat(text: string, quantity: number): string {
-    const repeated: string[] = []
+    const repeated: string[] = [];
     for (let index: number = 0; index < quantity; index++) {
-        repeated.push(text)
+      repeated.push(text);
     }
-    return repeated.join('')
+    return repeated.join('');
   }
 }

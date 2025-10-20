@@ -52,13 +52,13 @@ describe('Strings', () => {
       const text = 'xyz';
       const positions: number[] = [];
       const chars: string[] = [];
-      
+
       Strings.whildcard(text, (char, pos) => {
         chars.push(char);
         positions.push(pos);
         return char;
       });
-      
+
       expect(chars).toEqual(['x', 'y', 'z']);
       expect(positions).toEqual([0, 1, 2]);
     });
@@ -229,7 +229,9 @@ describe('Strings', () => {
   describe('uuid', () => {
     it('should return a UUID format string', () => {
       const result = Strings.uuid();
-      expect(result).toMatch(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/);
+      expect(result).toMatch(
+        /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/
+      );
     });
 
     it('should have correct length', () => {
@@ -286,4 +288,3 @@ describe('Strings', () => {
     });
   });
 });
-

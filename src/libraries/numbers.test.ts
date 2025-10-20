@@ -36,12 +36,12 @@ describe('Numbers', () => {
       const min = 1;
       const max = 3;
       const results = new Set<number>();
-      
+
       // Run enough times to likely hit all values
       for (let i = 0; i < 100; i++) {
         results.add(Numbers.between(min, max));
       }
-      
+
       // With a small range, we should hit all values
       expect(results.size).toBeGreaterThan(1);
     });
