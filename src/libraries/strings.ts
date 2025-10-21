@@ -12,7 +12,7 @@ export default class Strings {
     return String.fromCodePoint(Numbers.between(97, 122));
   }
   public static characters(length: number): string {
-    return Array.from({ length }, () => this.character()).join('');
+    return Array.from({ length }, () => Strings.character()).join('');
   }
   public static whildcard(text: string, callback: WildcardCallback): string {
     const newText: string[] = [];
@@ -22,7 +22,7 @@ export default class Strings {
     return newText.join('');
   }
   public static hex(): string {
-    return Arrays.random(Strings.HEX_CHARS);
+    return Arrays.randomItem(Strings.HEX_CHARS);
   }
   public static hexify(text: string): string {
     return Strings.whildcard(text, (character: string) =>
