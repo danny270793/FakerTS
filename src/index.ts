@@ -1,1 +1,1 @@
-export * from "./libraries/number"
+export * from "./libraries/numbers"
