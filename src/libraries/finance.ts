@@ -140,7 +140,7 @@ export default class Finance {
     
     return {
       number: Finance.creditCardNumber(cardType),
-      type: Finance.CARD_TYPES[cardType].name,
+      type: Finance.CARD_TYPES[cardType as keyof typeof Finance.CARD_TYPES].name,
       cvv: Finance.creditCardCVV(isAmex ? 'amex' : undefined),
       expiry: Finance.creditCardExpiry(),
       holder: Person.fullName().toUpperCase()
