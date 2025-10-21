@@ -287,4 +287,214 @@ describe('Strings', () => {
       expect(result).toBe('!@#!@#');
     });
   });
+
+  describe('alphanumeric', () => {
+    it('should return an alphanumeric string of default length', () => {
+      const result = Strings.alphanumeric();
+      expect(result).toMatch(/^[a-zA-Z0-9]{10}$/);
+    });
+
+    it('should return an alphanumeric string of specified length', () => {
+      const length = 20;
+      const result = Strings.alphanumeric(length);
+      expect(result).toMatch(/^[a-zA-Z0-9]{20}$/);
+      expect(result.length).toBe(length);
+    });
+
+    it('should contain both letters and numbers', () => {
+      // Run multiple times to increase chance of both appearing
+      let hasLetter = false;
+      let hasNumber = false;
+      for (let i = 0; i < 10; i++) {
+        const result = Strings.alphanumeric(20);
+        if (/[a-zA-Z]/.test(result)) hasLetter = true;
+        if (/[0-9]/.test(result)) hasNumber = true;
+      }
+      expect(hasLetter).toBe(true);
+      expect(hasNumber).toBe(true);
+    });
+  });
+
+  describe('capitalize', () => {
+    it('should capitalize first letter and lowercase the rest', () => {
+      const result = Strings.capitalize('hello');
+      expect(result).toBe('Hello');
+    });
+
+    it('should work with all uppercase input', () => {
+      const result = Strings.capitalize('HELLO');
+      expect(result).toBe('Hello');
+    });
+
+    it('should work with mixed case input', () => {
+      const result = Strings.capitalize('hELLo');
+      expect(result).toBe('Hello');
+    });
+
+    it('should return empty string for empty input', () => {
+      const result = Strings.capitalize('');
+      expect(result).toBe('');
+    });
+  });
+
+  describe('uppercase', () => {
+    it('should convert to uppercase', () => {
+      const result = Strings.uppercase('hello');
+      expect(result).toBe('HELLO');
+    });
+
+    it('should handle already uppercase text', () => {
+      const result = Strings.uppercase('HELLO');
+      expect(result).toBe('HELLO');
+    });
+  });
+
+  describe('lowercase', () => {
+    it('should convert to lowercase', () => {
+      const result = Strings.lowercase('HELLO');
+      expect(result).toBe('hello');
+    });
+
+    it('should handle already lowercase text', () => {
+      const result = Strings.lowercase('hello');
+      expect(result).toBe('hello');
+    });
+  });
+
+  describe('camelCase', () => {
+    it('should convert space-separated words to camelCase', () => {
+      const result = Strings.camelCase('hello world');
+      expect(result).toBe('helloWorld');
+    });
+
+    it('should convert snake_case to camelCase', () => {
+      const result = Strings.camelCase('hello_world_test');
+      expect(result).toBe('helloWorldTest');
+    });
+
+    it('should convert kebab-case to camelCase', () => {
+      const result = Strings.camelCase('hello-world-test');
+      expect(result).toBe('helloWorldTest');
+    });
+
+    it('should handle single word', () => {
+      const result = Strings.camelCase('hello');
+      expect(result).toBe('hello');
+    });
+  });
+
+  describe('snakeCase', () => {
+    it('should convert camelCase to snake_case', () => {
+      const result = Strings.snakeCase('helloWorld');
+      expect(result).toBe('hello_world');
+    });
+
+    it('should convert space-separated words to snake_case', () => {
+      const result = Strings.snakeCase('hello world test');
+      expect(result).toBe('hello_world_test');
+    });
+
+    it('should convert kebab-case to snake_case', () => {
+      const result = Strings.snakeCase('hello-world-test');
+      expect(result).toBe('hello_world_test');
+    });
+
+    it('should handle single word', () => {
+      const result = Strings.snakeCase('hello');
+      expect(result).toBe('hello');
+    });
+  });
+
+  describe('kebabCase', () => {
+    it('should convert camelCase to kebab-case', () => {
+      const result = Strings.kebabCase('helloWorld');
+      expect(result).toBe('hello-world');
+    });
+
+    it('should convert space-separated words to kebab-case', () => {
+      const result = Strings.kebabCase('hello world test');
+      expect(result).toBe('hello-world-test');
+    });
+
+    it('should convert snake_case to kebab-case', () => {
+      const result = Strings.kebabCase('hello_world_test');
+      expect(result).toBe('hello-world-test');
+    });
+
+    it('should handle single word', () => {
+      const result = Strings.kebabCase('hello');
+      expect(result).toBe('hello');
+    });
+  });
+
+  describe('randomString', () => {
+    it('should return a random string of default length', () => {
+      const result = Strings.randomString();
+      expect(result).toMatch(/^[a-z]{10}$/);
+    });
+
+    it('should return a random string of specified length', () => {
+      const length = 15;
+      const result = Strings.randomString(length);
+      expect(result).toMatch(/^[a-z]{15}$/);
+      expect(result.length).toBe(length);
+    });
+  });
+
+  describe('alphaNumeric', () => {
+    it('should be an alias for alphanumeric', () => {
+      const result = Strings.alphaNumeric(10);
+      expect(result).toMatch(/^[a-zA-Z0-9]{10}$/);
+    });
+  });
+
+  describe('sample', () => {
+    it('should return one of the provided options', () => {
+      const options = ['apple', 'banana', 'cherry'];
+      const result = Strings.sample(options);
+      expect(options).toContain(result);
+    });
+
+    it('should work with single option', () => {
+      const options = ['only'];
+      const result = Strings.sample(options);
+      expect(result).toBe('only');
+    });
+  });
+
+  describe('fromCharCode', () => {
+    it('should convert char code to character', () => {
+      const result = Strings.fromCharCode(65);
+      expect(result).toBe('A');
+    });
+
+    it('should work with different codes', () => {
+      const result = Strings.fromCharCode(97);
+      expect(result).toBe('a');
+    });
+  });
+
+  describe('symbol', () => {
+    it('should return a symbol character', () => {
+      const symbols = '!@#$%^&*()_+-=[]{}|;:,.<>?';
+      const result = Strings.symbol();
+      expect(symbols).toContain(result);
+    });
+  });
+
+  describe('symbols', () => {
+    it('should return a string of symbols', () => {
+      const result = Strings.symbols(5);
+      expect(result.length).toBe(5);
+      const symbolChars = '!@#$%^&*()_+-=[]{}|;:,.<>?';
+      for (const char of result) {
+        expect(symbolChars).toContain(char);
+      }
+    });
+
+    it('should work with different lengths', () => {
+      const result = Strings.symbols(10);
+      expect(result.length).toBe(10);
+    });
+  });
 });
