@@ -1,8 +1,8 @@
-# 🎭 FakerTS
+# 🎭 @danny270793/Faker
 
 > A comprehensive TypeScript library to generate fake data for testing and development
 
-[![npm version](https://img.shields.io/npm/v/@danny270793/fakerts.svg)](https://www.npmjs.com/package/@danny270793/fakerts)
+[![npm version](https://img.shields.io/npm/v/@danny270793/faker.svg)](https://www.npmjs.com/package/@danny270793/faker)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-blue.svg)](https://www.typescriptlang.org/)
 [![Tests](https://img.shields.io/badge/tests-335%20passing-brightgreen.svg)]()
@@ -12,13 +12,13 @@ Generate realistic fake data for your applications with ease. Perfect for testin
 ## 📦 Installation
 
 ```bash
-npm install @danny270793/fakerts
+npm install @danny270793/faker
 ```
 
 ## 🚀 Quick Start
 
 ```typescript
-import { Person, Internet, Lorem, Finance } from '@danny270793/fakerts';
+import { Person, Internet, Lorem, Finance } from '@danny270793/faker';
 
 // Generate a person
 const name = Person.fullName(); // "John Smith"
@@ -34,13 +34,13 @@ const card = Finance.creditCard();
 
 ## 📚 Libraries
 
-FakerTS includes 12 powerful libraries to generate various types of fake data:
+Faker includes 12 powerful libraries to generate various types of fake data:
 
 ### 🔢 Numbers
 Generate random numbers with various constraints.
 
 ```typescript
-import { Numbers } from '@danny270793/fakerts';
+import { Numbers } from '@danny270793/faker';
 
 Numbers.between(1, 100);      // Random number between 1-100
 Numbers.digit();              // Random digit 0-9
@@ -60,7 +60,7 @@ Numbers.octal();              // "0" to "7"
 Generate and manipulate random strings.
 
 ```typescript
-import { Strings } from '@danny270793/fakerts';
+import { Strings } from '@danny270793/faker';
 
 Strings.character();              // Random lowercase letter
 Strings.characters(10);           // 10 random letters
@@ -88,7 +88,7 @@ Strings.ascii();                  // Random ASCII character
 Generate random boolean values.
 
 ```typescript
-import { Booleans } from '@danny270793/fakerts';
+import { Booleans } from '@danny270793/faker';
 
 Booleans.boolean(0.7);  // 70% chance of true
 ```
@@ -97,7 +97,7 @@ Booleans.boolean(0.7);  // 70% chance of true
 Array manipulation and random selection.
 
 ```typescript
-import { Arrays } from '@danny270793/fakerts';
+import { Arrays } from '@danny270793/faker';
 
 Arrays.randomItem([1, 2, 3, 4]);      // Random item from array
 Arrays.randomItems([1, 2, 3, 4], 2);  // 2 random items
@@ -109,7 +109,7 @@ Arrays.random(5);                      // Array of 5 random digits
 Generate dates in various ranges.
 
 ```typescript
-import { Dates } from '@danny270793/fakerts';
+import { Dates } from '@danny270793/faker';
 
 Dates.between(start, end);        // Date between two dates
 Dates.past(5);                    // Date within past 5 years
@@ -125,7 +125,7 @@ Dates.weekday();                  // Random weekday name
 Generate color values in various formats.
 
 ```typescript
-import { Colors } from '@danny270793/fakerts';
+import { Colors } from '@danny270793/faker';
 
 Colors.hex();          // "#3F2A1B"
 Colors.rgb();          // "rgb(255, 128, 64)"
@@ -139,7 +139,7 @@ Colors.colorName();    // "red", "blue", "green", etc.
 Generate internet-related data.
 
 ```typescript
-import { Internet } from '@danny270793/fakerts';
+import { Internet } from '@danny270793/faker';
 
 Internet.email();                     // "user123@gmail.com"
 Internet.email('John', 'Doe');        // "john.doe@example.com"
@@ -159,7 +159,7 @@ Internet.httpStatusCode();            // 200, 404, 500, etc.
 Generate personal information.
 
 ```typescript
-import { Person } from '@danny270793/fakerts';
+import { Person } from '@danny270793/faker';
 
 Person.firstName();                   // "John"
 Person.firstName('male');             // Male first name
@@ -181,7 +181,7 @@ Person.bio();                         // Short biography text
 Generate geographic data.
 
 ```typescript
-import { Location } from '@danny270793/fakerts';
+import { Location } from '@danny270793/faker';
 
 Location.country();                   // "United States"
 Location.countryCode();               // "US"
@@ -201,7 +201,7 @@ Location.ordinalDirection();          // "Northeast", "Southwest", etc.
 Generate complete addresses.
 
 ```typescript
-import { Address } from '@danny270793/fakerts';
+import { Address } from '@danny270793/faker';
 
 Address.streetName();                 // "Main Street"
 Address.streetAddress();              // "123 Main Street"
@@ -225,7 +225,7 @@ Address.nearbyGPSCoordinate(lat, lon, radius);  // GPS near location
 Generate financial data (for testing only!).
 
 ```typescript
-import { Finance } from '@danny270793/fakerts';
+import { Finance } from '@danny270793/faker';
 
 // Credit cards (Luhn algorithm valid!)
 Finance.creditCardNumber();           // "4532015112830366"
@@ -277,7 +277,7 @@ Finance.mask("4532015112830366", 4);  // "************0366"
 Generate placeholder text.
 
 ```typescript
-import { Lorem } from '@danny270793/fakerts';
+import { Lorem } from '@danny270793/faker';
 
 // Words
 Lorem.word();                         // "lorem"
@@ -340,10 +340,10 @@ Each library is exported as a static class with methods. All methods are fully t
 
 ```typescript
 // Import specific libraries
-import { Numbers, Strings, Person } from '@danny270793/fakerts';
+import { Numbers, Strings, Person } from '@danny270793/faker';
 
 // Or import everything
-import * as Faker from '@danny270793/fakerts';
+import * as Faker from '@danny270793/faker';
 
 Faker.Person.fullName();
 Faker.Internet.email();
