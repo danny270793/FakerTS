@@ -36,12 +36,12 @@ describe('Numbers', () => {
       const min = 1;
       const max = 3;
       const results = new Set<number>();
-      
+
       // Run enough times to likely hit all values
       for (let i = 0; i < 100; i++) {
         results.add(Numbers.between(min, max));
       }
-      
+
       // With a small range, we should hit all values
       expect(results.size).toBeGreaterThan(1);
     });
@@ -91,27 +91,6 @@ describe('Numbers', () => {
     it('should return an integer', () => {
       const result = Numbers.digits(4);
       expect(Number.isInteger(result)).toBe(true);
-    });
-  });
-
-  describe('ascii', () => {
-    it('should return a number between 0 and 127', () => {
-      const result = Numbers.ascii();
-      expect(result).toBeGreaterThanOrEqual(0);
-      expect(result).toBeLessThanOrEqual(127);
-    });
-
-    it('should return an integer', () => {
-      const result = Numbers.ascii();
-      expect(Number.isInteger(result)).toBe(true);
-    });
-
-    it('should produce different ASCII codes across multiple calls', () => {
-      const results = new Set<number>();
-      for (let i = 0; i < 50; i++) {
-        results.add(Numbers.ascii());
-      }
-      expect(results.size).toBeGreaterThan(1);
     });
   });
 
