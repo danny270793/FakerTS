@@ -137,4 +137,140 @@ describe('Numbers', () => {
       expect(results.size).toBeGreaterThan(1);
     });
   });
+
+  describe('even', () => {
+    it('should return an even number', () => {
+      const result = Numbers.even();
+      expect(result % 2).toBe(0);
+    });
+
+    it('should return an even number within range', () => {
+      const min = 10;
+      const max = 20;
+      const result = Numbers.even(min, max);
+      expect(result).toBeGreaterThanOrEqual(10);
+      expect(result).toBeLessThanOrEqual(20);
+      expect(result % 2).toBe(0);
+    });
+
+    it('should work with odd min and max', () => {
+      const result = Numbers.even(1, 9);
+      expect(result % 2).toBe(0);
+      expect(result).toBeGreaterThanOrEqual(2);
+      expect(result).toBeLessThanOrEqual(8);
+    });
+  });
+
+  describe('odd', () => {
+    it('should return an odd number', () => {
+      const result = Numbers.odd();
+      expect(result % 2).toBe(1);
+    });
+
+    it('should return an odd number within range', () => {
+      const min = 10;
+      const max = 20;
+      const result = Numbers.odd(min, max);
+      expect(result).toBeGreaterThanOrEqual(11);
+      expect(result).toBeLessThanOrEqual(19);
+      expect(result % 2).toBe(1);
+    });
+
+    it('should work with even min and max', () => {
+      const result = Numbers.odd(2, 10);
+      expect(result % 2).toBe(1);
+      expect(result).toBeGreaterThanOrEqual(3);
+      expect(result).toBeLessThanOrEqual(9);
+    });
+  });
+
+  describe('positive', () => {
+    it('should return a positive number', () => {
+      const result = Numbers.positive();
+      expect(result).toBeGreaterThan(0);
+    });
+
+    it('should return a positive number within max', () => {
+      const max = 50;
+      const result = Numbers.positive(max);
+      expect(result).toBeGreaterThan(0);
+      expect(result).toBeLessThanOrEqual(max);
+    });
+  });
+
+  describe('negative', () => {
+    it('should return a negative number', () => {
+      const result = Numbers.negative();
+      expect(result).toBeLessThan(0);
+    });
+
+    it('should return a negative number within min', () => {
+      const min = -50;
+      const result = Numbers.negative(min);
+      expect(result).toBeLessThan(0);
+      expect(result).toBeGreaterThanOrEqual(min);
+    });
+  });
+
+  describe('float', () => {
+    it('should return a float between 0 and 1 by default', () => {
+      const result = Numbers.float();
+      expect(result).toBeGreaterThanOrEqual(0);
+      expect(result).toBeLessThanOrEqual(1);
+    });
+
+    it('should return a float within range', () => {
+      const min = 5.5;
+      const max = 10.5;
+      const result = Numbers.float(min, max);
+      expect(result).toBeGreaterThanOrEqual(min);
+      expect(result).toBeLessThanOrEqual(max);
+    });
+  });
+
+  describe('percentage', () => {
+    it('should return a number between 0 and 100', () => {
+      const result = Numbers.percentage();
+      expect(result).toBeGreaterThanOrEqual(0);
+      expect(result).toBeLessThanOrEqual(100);
+    });
+  });
+
+  describe('binary', () => {
+    it('should return 0 or 1', () => {
+      const result = Numbers.binary();
+      expect(['0', '1']).toContain(result);
+    });
+  });
+
+  describe('octal', () => {
+    it('should return a digit between 0 and 7', () => {
+      const result = Numbers.octal();
+      const num = parseInt(result);
+      expect(num).toBeGreaterThanOrEqual(0);
+      expect(num).toBeLessThanOrEqual(7);
+    });
+  });
+
+  describe('prime', () => {
+    it('should return a prime number', () => {
+      const result = Numbers.prime();
+      expect(result).toBeGreaterThan(1);
+      
+      // Check if it's prime
+      let isPrime = true;
+      for (let i = 2; i <= Math.sqrt(result); i++) {
+        if (result % i === 0) {
+          isPrime = false;
+          break;
+        }
+      }
+      expect(isPrime).toBe(true);
+    });
+
+    it('should return a number less than 200', () => {
+      const result = Numbers.prime();
+      expect(result).toBeLessThanOrEqual(199);
+    });
+  });
 });
