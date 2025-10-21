@@ -119,7 +119,7 @@ export default class Strings {
     return Arrays.randomItem(options);
   }
   public static fromCharCode(code: number): string {
-    return String.fromCharCode(code);
+    return String.fromCodePoint(code);
   }
   public static symbol(): string {
     const symbols = '!@#$%^&*()_+-=[]{}|;:,.<>?';
